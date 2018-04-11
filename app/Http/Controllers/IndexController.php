@@ -24,6 +24,6 @@ class IndexController extends Controller
                 , 'harvey.ho@auckland.ac.nz', 'harvey.nz@gmail.com'
             )->subject('New contact submission from 3d-fetus.org');
         });
-        return view('/');
+        return view('welcome');
     }
 }
