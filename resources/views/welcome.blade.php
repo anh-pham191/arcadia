@@ -76,8 +76,8 @@
         <div class="content">
             <h4>A web app for pregnant women education</h4>
             <hr>
-            <div class="header-text btn">
-                <h1><span id="head-title"></span></h1>
+            <div class=" btn">
+                <h1 style="color:white">3d fetus project of Auckland Uniservices</span></h1>
             </div>
         </div>
 
