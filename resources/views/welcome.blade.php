@@ -395,7 +395,7 @@
                             <input type="text" name="subject" class="form-control" placeholder="Subject">
                         </div>
                     </div>
-                    <textarea class="form-control" name="message" rows="4" placeholder="Message"></textarea>
+                    <textarea class="form-control" name="message" rows="4" placeholder="Message" style="height:200px"></textarea>
                     <div class="text-right">
                         <button type="submit" class="btn send-btn">Send</button>
                     </div>
