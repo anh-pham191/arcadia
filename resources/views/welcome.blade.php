@@ -388,7 +388,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <input type="text" name="name" class="form-control" placeholder="Your Name">
-                            <input type="text" name="phone" class="form-control" placeholder="Phone No.">
+                            <input type="number" name="phone" class="form-control" placeholder="Phone No.">
                         </div>
                         <div class="col-md-6">
                             <input type="text" name="email" class="form-control" placeholder="Email">

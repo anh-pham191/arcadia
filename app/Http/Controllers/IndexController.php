@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use App\Contact;
 
 class IndexController extends Controller
 {
@@ -18,6 +19,14 @@ class IndexController extends Controller
         $email = $request->email;
         $subject = $request->subject;
         $mess = $request->message;
+        Contact::create([
+            'name' => $name,
+            'phone' => $phone,
+            'email' => $email,
+            'subject' => $subject,
+            'message' => $mess
+        ]);
+
         $exception = 'sdf';
         Mail::send('mail', ['subject' => $subject, 'name' => $name, 'mess' => $mess , 'phone' => $phone, 'email' => $email], function ($message) {
             $message->to("harvey.nz@gmail.com")->cc('harvey.ho@auckland.ac.nz')->cc('tuananh191194@gmail.com')
