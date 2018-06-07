@@ -163,11 +163,6 @@
 </div>
 
 <!-- Call-to-Action Section -->
-<div id="cta">
-    <div class="container text-center">
-        <a href="#" class="btn go-to-btn">Place holder</a>
-    </div>
-</div>
 
 <!-- Portfolio Section -->
 <div id="works">
@@ -427,6 +422,9 @@
 
 <script src="js/owl.carousel.js"></script>
 <script src="js/typed.js"></script>
+<script src="3d/js/three.min.js"></script>
+<script src="3d/js/app.js"></script>
+
 <script>
     $(function(){
         $("#head-title").typed({
@@ -436,6 +434,22 @@
             startDelay: 100
         });
     });
+
+    var loader = new THREE.FileLoader();
+    loader.load( '3d/app.json', function ( text ) {
+
+        var player = new APP.Player();
+        player.load( JSON.parse( text ) );
+        player.setSize( window.innerWidth, window.innerHeight );
+        player.play();
+
+        document.body.appendChild( player.dom );
+
+        window.addEventListener( 'resize', function () {
+            player.setSize( window.innerWidth, window.innerHeight);
+        } );
+
+    } );
 </script>
 
 <!-- Javascripts
