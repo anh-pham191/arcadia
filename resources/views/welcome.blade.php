@@ -303,7 +303,7 @@
 
                     <div class="col-md-4 col-sm-4">
                         <div class="team">
-                            <a href="http://django-env2.agwegz8nms.ap-southeast-2.elasticbeanstalk.com/models/5/"><img src="img/3dsim/sim2.jpg" class="img-responsive img-circle" alt="..."></a>
+                            <a href="/Smoke"><img src="img/3dsim/sim2.jpg" class="img-responsive img-circle" alt="..."></a>
                             <br>
                             <h4>3D scans</h4>
                             <p class="small">3D pose animation</p>
