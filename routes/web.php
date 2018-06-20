@@ -12,4 +12,5 @@
 */
 
 \Route::get('/', 'IndexController@index');
+\Route::get('threed', 'IndexController@threed');
 \Route::post('/', 'IndexController@postContact');

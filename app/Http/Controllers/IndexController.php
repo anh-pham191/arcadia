@@ -13,6 +13,11 @@ class IndexController extends Controller
         return view('welcome');
     }
 
+    public function threed()
+    {
+        return view('smoke');
+    }
+
     public function postContact(Request $request){
         $name = $request->name;
         $phone = $request->phone;
