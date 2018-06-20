@@ -388,7 +388,7 @@
 			<div id="viewer">
 				<span id="shapecanvas"></span>
 			</div>
-			<div id="controls">
+			<!-- <div id="controls">
 				<span>CONTROLS</span><br/>
 				<br/>
 				<span>Check to hide / Uncheck to show</span>
@@ -419,7 +419,7 @@
 						<canvas id="hbco-chart-line"></canvas>
 					</div>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</body>
 </html>
