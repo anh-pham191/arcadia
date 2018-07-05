@@ -12,5 +12,6 @@
 */
 
 \Route::get('/', 'IndexController@index');
-\Route::get('threed', 'IndexController@threed');
 \Route::post('/', 'IndexController@postContact');
+\Route::get('threed', 'IndexController@threed');
+\Route::get('lung', 'IndexController@lung');

@@ -18,6 +18,11 @@ class IndexController extends Controller
         return view('smoke');
     }
 
+    public function lung()
+    {
+        return view('lung');
+    }
+
     public function postContact(Request $request){
         $name = $request->name;
         $phone = $request->phone;
