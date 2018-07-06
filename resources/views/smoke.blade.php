@@ -33,12 +33,12 @@
 
 		//add liver
 
-		var unselected_liver = new THREE.MeshPhongMaterial({color: 0x6F1862, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
-		var selected_liver = new THREE.MeshPhongMaterial({color: 0xAAAAAA, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
-		var unselected_brain = new THREE.MeshPhongMaterial({color: 0xFCE13D, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
+		var unselected_liver = new THREE.MeshPhongMaterial({color: 0xCCA994, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
+		var selected_liver = new THREE.MeshPhongMaterial({color: 0x22AA00, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
+		var unselected_brain = new THREE.MeshPhongMaterial({color: 0xAAAAAA, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
 		var selected_brain = new THREE.MeshPhongMaterial({color: 0xAAAAAA, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
-		var unselected_kidney = new THREE.MeshPhongMaterial({color: 0xABDD9E, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
-		var selected_kidney = new THREE.MeshPhongMaterial({color: 0xAAAAAA, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
+		var unselected_kidney = new THREE.MeshPhongMaterial({color: 0xCCA994, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
+		var selected_kidney = new THREE.MeshPhongMaterial({color: 0x22AA00, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
 
 		// end add liver
 
@@ -124,13 +124,7 @@
 				var sloader = new THREE.STLLoader();
 
 				// add liver
-				sloader.load('../Smoke/models/brain.stl', function (geometry) {
-					var mesh = new THREE.Mesh(geometry, unselected_brain);
-					mesh.name = "brain";
-					pos["brain"] = mesh;
-					scene.add(mesh);
-					$('#items-list').append('<input type="checkbox" class="item" value="brain" />brain<br/>');
-				});
+				
 
 				sloader.load('../Smoke/models/kidney.stl', function (geometry) {
 					var mesh = new THREE.Mesh(geometry, unselected_kidney);
@@ -141,7 +135,7 @@
 					$('#items-list').append('<input type="checkbox" class="item" value="kidney" />kidney<br/>');
 				});
 
-					
+				//stl
 				
 				sloader.load('../Smoke/models/liver.stl', function(geometry) {
 					var mesh = new THREE.Mesh(geometry, unselected_liver);
@@ -151,6 +145,17 @@
 					scene.add(mesh);
 					$('#items-list').append('<input type="checkbox" class="item" value="liver" />liver<br/>');
 				});
+
+				//json
+
+				// jloader.load('../Smoke/models/liver_new_1.json', function (geometry) {
+				// 	var mesh = new THREE.Mesh(geometry, unselected_liver);
+				// 	mesh.renderOrder = 0.1;
+				// 	mesh.name = "liver";
+				// 	pos["liver"] = mesh;
+				// 	scene.add(mesh);
+				// 	$('#items-list').append('<input type="checkbox" class="item" value="uterus" />liver<br/>');
+				// });
 
 				// end add liver
 				
@@ -177,6 +182,19 @@
 					pos["arteries"] = mesh;
 					scene.add(mesh);
 					$('#items-list').append('<input type="checkbox" class="item" value="arteries" />arteries<br/>');
+				});
+
+
+
+				sloader.load('../Smoke/models/test.stl', function (geometry) {
+					var mesh = new THREE.Mesh(geometry, unselected_brain);
+
+					mesh.renderOrder = 1;
+					mesh.material.alphaTest = 0.1;
+					mesh.name = "brain";
+					pos["brain"] = mesh;
+					scene.add(mesh);
+					$('#items-list').append('<input type="checkbox" class="item" value="brain" />brain<br/>');
 				});
 				
 				$(document).on('change', '.item', function() {
@@ -214,6 +232,8 @@
 					controls.target.set(center.x, center.y, center.z);
 					controls.update();
 				});
+
+
 			}
 			
 			function animate() {
