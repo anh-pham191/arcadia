@@ -223,7 +223,7 @@
 					controls.target.set(center.x, center.y, center.z);
 					camera.position.set(0,0,Math.max(center.x*2,center.y*2,center.z*2));
 					camera.position.y = 3;
-					camera.position.z = 0;
+					camera.position.z = 0.9;
 					
 
 
