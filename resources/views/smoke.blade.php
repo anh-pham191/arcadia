@@ -35,8 +35,8 @@
 
 		var unselected_liver = new THREE.MeshPhongMaterial({color: 0xCCA994, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
 		var selected_liver = new THREE.MeshPhongMaterial({color: 0x22AA00, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
-		var unselected_brain = new THREE.MeshPhongMaterial({color: 0xAAAAAA, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
-		var selected_brain = new THREE.MeshPhongMaterial({color: 0xAAAAAA, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
+		var unselected_brain = new THREE.MeshPhongMaterial({color: 0xBE645A, opacity: items_opacity, transparent: items_transparent, side: THREE.BackSide});
+		var selected_brain = new THREE.MeshPhongMaterial({color: 0xBE645A, opacity: items_opacity, transparent: items_transparent, side: THREE.BackSide});
 		var unselected_kidney = new THREE.MeshPhongMaterial({color: 0xCCA994, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
 		var selected_kidney = new THREE.MeshPhongMaterial({color: 0x22AA00, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
 
@@ -186,7 +186,7 @@
 
 
 
-				sloader.load('../Smoke/models/test.stl', function (geometry) {
+				sloader.load('../Smoke/models/surface.stl', function (geometry) {
 					var mesh = new THREE.Mesh(geometry, unselected_brain);
 
 					mesh.renderOrder = 1;

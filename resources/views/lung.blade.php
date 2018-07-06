@@ -34,11 +34,11 @@
 		//add liver
 
 		var unselected_liver = new THREE.MeshPhongMaterial({color: 0xCCA994, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
-		var selected_liver = new THREE.MeshPhongMaterial({color: 0x22AA00, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
-		var unselected_brain = new THREE.MeshPhongMaterial({color: 0xAAAAAA, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
-		var selected_brain = new THREE.MeshPhongMaterial({color: 0xAAAAAA, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
+		var selected_liver = new THREE.MeshPhongMaterial({color: 0xCCA994, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
+		var unselected_brain = new THREE.MeshPhongMaterial({color: 0xCCA994, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
+		var selected_brain = new THREE.MeshPhongMaterial({color: 0xCCA994, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
 		var unselected_kidney = new THREE.MeshPhongMaterial({color: 0xCCA994, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
-		var selected_kidney = new THREE.MeshPhongMaterial({color: 0x22AA00, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
+		var selected_kidney = new THREE.MeshPhongMaterial({color: 0xCCA994, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
 
 		// end add liver
 
@@ -125,6 +125,17 @@
 
 				// add liver
 				
+				sloader.load('../Smoke/models/brain.stl', function (geometry) {
+					var mesh = new THREE.Mesh(geometry, unselected_brain);
+
+					mesh.renderOrder = 1;
+					mesh.material.alphaTest = 0.1;
+					mesh.name = "brain";
+					pos["brain"] = mesh;
+					scene.add(mesh);
+					$('#items-list').append('<input type="checkbox" class="item" value="brain" />brain<br/>');
+				});
+
 
 				sloader.load('../Smoke/models/kidney.stl', function (geometry) {
 					var mesh = new THREE.Mesh(geometry, unselected_kidney);
@@ -139,23 +150,12 @@
 				
 				sloader.load('../Smoke/models/liver.stl', function(geometry) {
 					var mesh = new THREE.Mesh(geometry, unselected_liver);
-					console.log(mesh);
 					mesh.name = "liver";
 					pos["liver"] = mesh;
 					scene.add(mesh);
 					$('#items-list').append('<input type="checkbox" class="item" value="liver" />liver<br/>');
 				});
 
-				//json
-
-				// jloader.load('../Smoke/models/liver_new_1.json', function (geometry) {
-				// 	var mesh = new THREE.Mesh(geometry, unselected_liver);
-				// 	mesh.renderOrder = 0.1;
-				// 	mesh.name = "liver";
-				// 	pos["liver"] = mesh;
-				// 	scene.add(mesh);
-				// 	$('#items-list').append('<input type="checkbox" class="item" value="uterus" />liver<br/>');
-				// });
 
 				// end add liver
 				
@@ -186,16 +186,7 @@
 
 
 
-				sloader.load('../Smoke/models/test.stl', function (geometry) {
-					var mesh = new THREE.Mesh(geometry, unselected_brain);
-
-					mesh.renderOrder = 1;
-					mesh.material.alphaTest = 0.1;
-					mesh.name = "brain";
-					pos["brain"] = mesh;
-					scene.add(mesh);
-					$('#items-list').append('<input type="checkbox" class="item" value="brain" />brain<br/>');
-				});
+				
 				
 				$(document).on('change', '.item', function() {
 					var name = $(this).attr('value');
@@ -219,7 +210,7 @@
 				});
 				
 				var sloader = new THREE.STLLoader();
-				sloader.load('../Smoke/models/surface.stl', function(geometry) {
+				sloader.load('../Smoke/models/surface_new.stl', function(geometry) {
 					var mesh = new THREE.Mesh(geometry, surface_material);
 					mesh.renderOrder = 1;
 					mesh.name = "surface";
@@ -230,8 +221,10 @@
 					var center = new THREE.Vector3(box.min.x + ((box.max.x - box.min.x) / 2), box.min.y + ((box.max.y - box.min.y) / 2), box.min.z + ((box.max.z - box.min.z) / 2));
 					
 					controls.target.set(center.x, center.y, center.z);
-					camera.position.set(0,0,Math.max(center.x,center.y,center.z));
-					camera.position.y = -220;
+					camera.position.set(0,0,Math.max(center.x*2,center.y*2,center.z*2));
+					camera.position.y = 3;
+					camera.position.z = 0;
+					
 
 
 					controls.update();
