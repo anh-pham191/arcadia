@@ -31,7 +31,7 @@
         nav {
             float: left;
             width: 30%;
-            height: 1100px; /* only for demonstration, should be removed */
+            height: 700px; /* only for demonstration, should be removed */
             background: #ccc;
             padding: 20px;
         }
@@ -47,7 +47,7 @@
             padding: 20px;
             width: 70%;
             background-color: #f1f1f1;
-            height: 1100px; /* only for demonstration, should be removed */
+            height: 700px; /* only for demonstration, should be removed */
         }
 
         /* Clear floats after the columns */
@@ -106,16 +106,6 @@
         <p>	Nicotine is arguably the most damaging chemical exposure to the embryo and fetus from maternal smoking, affecting multiple organs including the central nervous system. Scientists concerned about the developmental toxicity of nicotine have argued strongly against any use of NRT in pregnancy</p>
         <p>	Nicotine is clearly a neuroteratogen, impacting the brain at critical developmental stages [37], and is the most likely cause of cognitive, emotional and behavioral problems seen in children of smokers</p>
         <p>	Nicotine binds to receptors through which developmentally important signaling occurs in many developing organs and tissues in addition to the central nervous system</p>
-        <h2>	Spontaneous abortion</h2>
-        <p>	In a population-based case–control study in Sweden, women were categorized by plasma cotinine concentration as non-exposed (<0.1 ng cotinine/ml plasma), environmental tobacco smoke-exposed (0.1–15 ng/ml) or active smokers (>15 ng/ml). The risk of spontaneous abortion was increased among both ETS-exposed women (adjusted odds ratio 1.67 [95% CI 1.17–2.38] and active smokers (adjusted odds ratio 2.11 [95% CI 1.36–3.27]</p>
-        <h2>Effects on the placenta</h2>
-        <p>Maternal smoking alters the blood flow to the placenta and changes the balance between proliferation and differentiation of the cytotrophoblast.</p>
-        <p>Changes seen in the placentas of smokers were present in less severe form in women exposed to secondhand smoke during pregnancy</p>
-        <p>Cadmium, a constituent of tobacco smoke known to accumulate in the placenta, has been shown to inhibit the activity of the enzyme 11-β-hydroxysteroid dehydrogenase type 2 (11-β-HSD2) as well as decrease 11-β-HSD2 mRNA and protein in cultured human trophoblast cells [49]. Reduction in 11-β-HSD2 activity in the placenta has been associated with decreased intrauterine growth</p>
-        <p>Placental abruption, the premature separation of a normally implanted placenta before delivery, occurs in about 1% of pregnancies….maternal smoking has been associated with a 90% increase in risk of placental abruption (odds ratio 1.9 [95% CI 1.8–2.0])</p>
-        <p>Maternal smoking has been associated with placenta previa, which is the implantation of the placenta over or near the internal os of the cervix. As labor approaches, partial detachment and severe vaginal bleeding may result.
-            The odds ratios for increased risk of placenta previa with maternal smoking ranged from 2.6 to 4.4, despite controlling for confounders.
-        </p>
     </article>
 </section>
 
