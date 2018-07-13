@@ -329,26 +329,26 @@
 			mouse.x = ((event.pageX - offset.left) / width) * 2 - 1;
 			mouse.y = - ((event.pageY - offset.top) / height) * 2 + 1;
 		}
-		
+
 		function onDocumentMouseDown(event) {
 			var offset = $('#shapecanvas canvas').offset();
 			last_mouse.x = ((event.pageX - offset.left) / width) * 2 - 1;
 			last_mouse.y = - ((event.pageY - offset.top) / height) * 2 + 1;
 		}
-		
+
 		function onDocumentMouseUp(event) {
 			var offset = $('#shapecanvas canvas').offset();
 			mouse.x = ((event.pageX - offset.left) / width) * 2 - 1;
 			mouse.y = - ((event.pageY - offset.top) / height) * 2 + 1;
-			
+
 			if (Math.sqrt((mouse.x - last_mouse.x) * (mouse.x - last_mouse.x) + (mouse.y - last_mouse.y) * (mouse.y - last_mouse.y)) < 0.005) {
 				raycaster.setFromCamera(mouse, camera);
 				var models = $.map(pos, function(value, key) { return value });
 				var hits = raycaster.intersectObjects(models);
-								
+
 				for (var key in pos) pos[key].material.transparent = true;
 				$('#item-selected').html('&nbsp;');
-				
+
 				if (hits.length > 0) {
 					var selected = hits[0].object;
 					selected.material.transparent = false;

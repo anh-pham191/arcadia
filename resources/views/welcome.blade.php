@@ -143,8 +143,8 @@
             <div class="col-md-4 col-sm-4">
                 <div class="service">
                     <span class="fa fa-bicycle fa-3x"></span>
-                    <h4>Fetal ultrasound</h4>
-                    <p>state-of-the-art 4D ultrasound imaging is able to reveal the 3D physical features of the fetus. However, until now, reconstructed 3D images have been of low resolution, only showing the vague image of a fetus (e.g. its face). We propose using a highly detailed 3D fetus model that can be morphed as per the dynamic geometric features detected by 4D ultrasound, so that the mother can have an immediate connection with the fetus model.  </p>
+                    <a href="/knowledge">Do you know</a>
+                    {{--<p>state-of-the-art 4D ultrasound imaging is able to reveal the 3D physical features of the fetus. However, until now, reconstructed 3D images have been of low resolution, only showing the vague image of a fetus (e.g. its face). We propose using a highly detailed 3D fetus model that can be morphed as per the dynamic geometric features detected by 4D ultrasound, so that the mother can have an immediate connection with the fetus model.  </p>--}}
                 </div>
             </div>
 
@@ -435,21 +435,6 @@
         });
     });
 
-    var loader = new THREE.FileLoader();
-    loader.load( '3d/app.json', function ( text ) {
-
-        var player = new APP.Player();
-        player.load( JSON.parse( text ) );
-        player.setSize( window.innerWidth, window.innerHeight );
-        player.play();
-
-        document.body.appendChild( player.dom );
-
-        window.addEventListener( 'resize', function () {
-            player.setSize( window.innerWidth, window.innerHeight);
-        } );
-
-    } );
 </script>
 
 <!-- Javascripts

@@ -15,3 +15,5 @@
 \Route::post('/', 'IndexController@postContact');
 \Route::get('threed', 'IndexController@threed');
 \Route::get('lung', 'IndexController@lung');
+\Route::get('knowledge', 'IndexController@knowledge');
+\Route::get('knowledge/{id}', 'IndexController@knowledgeDetail');
