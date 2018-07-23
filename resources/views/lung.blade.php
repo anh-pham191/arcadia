@@ -284,7 +284,7 @@
 			
 			renderer = new THREE.WebGLRenderer();
 			renderer.setSize(width, height);
-			renderer.setClearColor(0x000000, 1);
+			renderer.setClearColor(0xffffff, 1);
 			
 			var span = document.getElementById("shapecanvas");
 			span.appendChild(renderer.domElement);
