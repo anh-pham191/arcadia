@@ -1,13 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <title>Knowledge Base</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css"  href="css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="font-awesome-4.2.0/css/font-awesome.css">
-    <link rel="stylesheet" type="text/css" href="css/jasny-bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    {{--<link rel="stylesheet" type="text/css"  href="css/bootstrap.css">--}}
+    {{--<link rel="stylesheet" type="text/css" href="font-awesome-4.2.0/css/font-awesome.css">--}}
+    {{--<link rel="stylesheet" type="text/css" href="css/jasny-bootstrap.min.css">--}}
+    {{--<link rel="stylesheet" type="text/css" href="css/animate.css">--}}
+
+    <script src="../Smoke/Three.js"></script>
+    <script src="../Smoke/OrbitControls.js"></script>
+    <script src="../Smoke/STLLoader.js"></script>
+    <script src="../Smoke/jquery-3.2.0.min.js"></script>
+    <script type="text/javascript">
+        var mouse = new THREE.Vector2(0, 0);
+        var last_mouse = new THREE.Vector2(0, 0);
+        var raycaster = new THREE.Raycaster();
+        var jloader = new THREE.JSONLoader();
+        var sloader = new THREE.STLLoader();
+
+        var controls;
+        var pos = {};
+        var surface_mesh;
+        var camera;
+        var renderer;
+        var items_opacity = 0.4;
+        var items_transparent = true;
+        var unselected_liver = new THREE.MeshPhongMaterial({color: 0xCCA994, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
+        var selected_liver = new THREE.MeshPhongMaterial({color: 0xCCA994, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
+
+        var width = window.innerWidth - 316;
+        var height = window.innerHeight - 76;
+        var hue_limit = 2/3;
+        var max_hbco = 7.7;
+        var color_factor = hue_limit / max_hbco;
+
+        var hbco = [0.0, 1.0, 1.5, 2.0, 2.6, 3.2, 3.8, 4.4, 4.9, 5.4, 5.8, 6.2, 6.6, 6.9, 7.2, 7.5, 7.7, 7.7, 7.4, 7.0, 6.4, 5.9, 5.2, 4.6, 4.1];
+
+        function draw3D() {
+            function setup() {
+
+                var sloader = new THREE.STLLoader();
+
+                // add liver
+
+                sloader.load('../Smoke/models/liver.stl', function(geometry) {
+                    var mesh = new THREE.Mesh(geometry, unselected_liver);
+
+                    mesh.name = "liver";
+                    pos["liver"] = mesh;
+                    scene.add(mesh);
+                    mesh.renderOrder = 1;
+                    console.log(mesh);
+                    var box = new THREE.Box3().setFromObject(mesh);
+                    var center = new THREE.Vector3(box.min.x + ((box.max.x - box.min.x) / 2), box.min.y + ((box.max.y - box.min.y) / 2), box.min.z + ((box.max.z - box.min.z) / 2));
+
+                    controls.target.set(center.x, center.y, center.z);
+                    controls.update();
+                });
+
+
+
+            }
+
+            function animate() {
+                requestAnimationFrame(animate);
+                controls.update();
+                renderer.render(scene, camera);
+            }
+
+            var scene = new THREE.Scene();
+
+            camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 10000);
+
+            var ambientLight = new THREE.AmbientLight(0x555555);
+            scene.add(ambientLight);
+
+            var directionalLight = new THREE.DirectionalLight(0xe0e0e0);
+            directionalLight.position.set(5, 2, 5).normalize();
+            scene.add(directionalLight);
+
+            var directionalLight2 = new THREE.DirectionalLight(0xe0e0e0);
+            directionalLight2.position.set(-5, -2, -5).normalize();
+            scene.add(directionalLight2);
+
+            renderer = new THREE.WebGLRenderer();
+            renderer.setSize(width, height);
+            renderer.setClearColor(0x000000, 1);
+
+            var span = document.getElementById("shapecanvas");
+            span.appendChild(renderer.domElement);
+
+            controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+            span.addEventListener('mousemove', onDocumentMouseMove, false);
+            span.addEventListener('mousedown', onDocumentMouseDown, false);
+            span.addEventListener('mouseup', onDocumentMouseUp, false);
+
+            setup();
+            animate();
+        }
+
+        function onDocumentMouseMove(event) {
+            var offset = $('#shapecanvas canvas').offset();
+            mouse.x = ((event.pageX - offset.left) / width) * 2 - 1;
+            mouse.y = - ((event.pageY - offset.top) / height) * 2 + 1;
+        }
+
+        function onDocumentMouseDown(event) {
+            var offset = $('#shapecanvas canvas').offset();
+            last_mouse.x = ((event.pageX - offset.left) / width) * 2 - 1;
+            last_mouse.y = - ((event.pageY - offset.top) / height) * 2 + 1;
+        }
+
+        function onDocumentMouseUp(event) {
+            var offset = $('#shapecanvas canvas').offset();
+            mouse.x = ((event.pageX - offset.left) / width) * 2 - 1;
+            mouse.y = - ((event.pageY - offset.top) / height) * 2 + 1;
+
+            if (Math.sqrt((mouse.x - last_mouse.x) * (mouse.x - last_mouse.x) + (mouse.y - last_mouse.y) * (mouse.y - last_mouse.y)) < 0.005) {
+                raycaster.setFromCamera(mouse, camera);
+                var models = $.map(pos, function(value, key) { return value });
+                var hits = raycaster.intersectObjects(models);
+
+                for (var key in pos) pos[key].material.transparent = true;
+                $('#item-selected').html('&nbsp;');
+
+                if (hits.length > 0) {
+                    var selected = hits[0].object;
+                    selected.material.transparent = false;
+                    $('#item-selected').html(selected.name);
+                }
+            }
+        }
+
+        // Function to execute when the window changes its size
+        window.addEventListener('resize', function() {
+            width = window.innerWidth - 316;
+            height = window.innerHeight - 76;
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+            renderer.setSize(width, height);
+        }, false);
+    </script>
 
     <style>
         * {
@@ -74,7 +211,7 @@
         }
     </style>
 </head>
-<body>
+<body onload="draw3D();" >
 <header>
     <h2>{!! $topic['title'] !!}</h2>
 </header>
@@ -91,13 +228,19 @@
         </ul>
     </nav>
 
-    <article>
+    <article  >
        @foreach($topic['text'] as $text)
            <p>{!! $text!!}</p>
            @endforeach
+           <div id="viewer" style="background-color: black">
+               <span id="shapecanvas"></span>
+           </div>
     </article>
+
 </section>
 
 </body>
+
+
 </html>
 
