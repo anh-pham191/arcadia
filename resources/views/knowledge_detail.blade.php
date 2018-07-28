@@ -5,10 +5,15 @@
     <title>Knowledge Base</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {{--<link rel="stylesheet" type="text/css"  href="css/bootstrap.css">--}}
-    {{--<link rel="stylesheet" type="text/css" href="font-awesome-4.2.0/css/font-awesome.css">--}}
-    {{--<link rel="stylesheet" type="text/css" href="css/jasny-bootstrap.min.css">--}}
-    {{--<link rel="stylesheet" type="text/css" href="css/animate.css">--}}
+    <link rel="stylesheet" type="text/css"  href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="font-awesome-4.2.0/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="css/jasny-bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
     <script src="../Smoke/Three.js"></script>
     <script src="../Smoke/OrbitControls.js"></script>
@@ -98,7 +103,6 @@
             span.addEventListener('mousemove', onDocumentMouseMove, false);
             span.addEventListener('mousedown', onDocumentMouseDown, false);
             span.addEventListener('mouseup', onDocumentMouseUp, false);
-
             setup();
             animate();
         }
@@ -217,7 +221,7 @@
 </header>
 
 <section>
-    <nav>
+    <nav class="col-md-2">
         <ul>
             <li><a href="/knowledge/1">Birthweight</a></li>
             <li><a href="/knowledge/2">Sudden Infant Death Syndrom (SIDS)</a></li>
@@ -228,14 +232,17 @@
         </ul>
     </nav>
 
-    <article  >
+    <article class="col-md-4" >
        @foreach($topic['text'] as $text)
            <p>{!! $text!!}</p>
            @endforeach
-           <div id="viewer" style="background-color: black">
-               <span id="shapecanvas"></span>
-           </div>
+
     </article>
+    <div class="col-md-6">
+        <div id="viewer" style="background-color: black">
+            <span id="shapecanvas"style="width:100%; height: 100%"></span>
+        </div>
+    </div>
 
 </section>
 
