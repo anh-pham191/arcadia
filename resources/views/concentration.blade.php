@@ -34,14 +34,16 @@
         var width = window.innerWidth - 316;
         var height = window.innerHeight - 76;
         var hue_limit = 2/3;
-        var max_hbco = 7.7;
+        var max_hbco = 75;
         var color_factor = hue_limit / max_hbco;
 
         var hbco = [0.0, 1.0, 1.5, 2.0, 2.6, 3.2, 3.8, 4.4, 4.9, 5.4, 5.8, 6.2, 6.6, 6.9, 7.2, 7.5, 7.7, 7.7, 7.4, 7.0, 6.4, 5.9, 5.2, 4.6, 4.1];
 
         var liver = [0, 60, 25, 3, 2, 1, 0.9, 0.7, 0.6, 0.5, 0.5, 0.5, 0.4, 0.4, 0.3, 0.2, 0.2, 0.2, 0.1, 0.1, 0.1, 0.09, 0.08, 0.08, 0.07];
 
-        var brain = [0, 75, ]
+        var brain = [0, 75, 50, 25, 20, 15, 12, 10, 9, 8, 8, 7, 6.5, 6, 6, 5.5, 5.5, 4, 4, 4, 3.5, 3.5, 3.5, 3.5, 3];
+
+        var kidney = [0, 20, 12, 10, 7, 6, 5, 4.5, 4.5, 4.5, 4, 3.7, 3.4, 3.3, 3.2, 3, 2.5, 2, 1.5, 1, 0.7, 0.6, 0.5];
 
         function draw3D() {
             function setup() {
@@ -177,9 +179,9 @@
             });
 
             $(document).on('input change', '#hbco-slider', function() {
-                pos["brain"].material.color.setHSL((max_hbco - hbco[$(this).val()]) * color_factor, 1.0, 0.5);
-                pos["kidney"].material.color.setHSL((max_hbco - hbco[$(this).val()]) * color_factor, 1.0, 0.5);
-                pos["liver"].material.color.setHSL((max_hbco - hbco[$(this).val()]) * color_factor, 1.0, 0.5);
+                pos["brain"].material.color.setHSL((max_hbco - brain[$(this).val()]) * color_factor, 1.0, 0.5);
+                pos["kidney"].material.color.setHSL((max_hbco - kidney[$(this).val()]) * color_factor, 1.0, 0.5);
+                pos["liver"].material.color.setHSL((max_hbco - liver[$(this).val()]) * color_factor, 1.0, 0.5);
 
 
                 $("#hbco-time").html($(this).val());
