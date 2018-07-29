@@ -216,11 +216,11 @@
     </style>
 </head>
 <body onload="draw3D();" >
-<header>
+<header class="row">
     <h2>{!! $topic['title'] !!}</h2>
 </header>
 
-<section>
+<section class="row">
     <nav class="col-md-2">
         <ul>
             <li><a href="/knowledge/1">Birthweight</a></li>

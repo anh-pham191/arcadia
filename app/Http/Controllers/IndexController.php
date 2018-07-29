@@ -84,6 +84,11 @@ class IndexController extends Controller
         return view('lung');
     }
 
+    public function concentration()
+    {
+        return view('concentration');
+    }
+
     public function postContact(Request $request)
     {
         $name = $request->name;
