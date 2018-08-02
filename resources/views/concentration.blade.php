@@ -37,7 +37,7 @@
         var max_hbco = 75;
         var color_factor = hue_limit / max_hbco;
 
-        var hbco = [0.0, 1.0, 1.5, 2.0, 2.6, 3.2, 3.8, 4.4, 4.9, 5.4, 5.8, 6.2, 6.6, 6.9, 7.2, 7.5, 7.7, 7.7, 7.4, 7.0, 6.4, 5.9, 5.2, 4.6, 4.1];
+        // var hbco = [0.0, 1.0, 1.5, 2.0, 2.6, 3.2, 3.8, 4.4, 4.9, 5.4, 5.8, 6.2, 6.6, 6.9, 7.2, 7.5, 7.7, 7.7, 7.4, 7.0, 6.4, 5.9, 5.2, 4.6, 4.1];
 
         var liver = [0, 60, 25, 3, 2, 1, 0.9, 0.7, 0.6, 0.5, 0.5, 0.5, 0.4, 0.4, 0.3, 0.2, 0.2, 0.2, 0.1, 0.1, 0.1, 0.09, 0.08, 0.08, 0.07];
 
@@ -185,19 +185,21 @@
 
 
                 $("#hbco-time").html($(this).val());
-                $("#hbco-value").html(hbco[$(this).val()]);
+                // $("#hbco-value").html(hbco[$(this).val()]);
 
                 var dynamic_canvas = document.getElementById("hbco-chart-line");
                 var dynamic_context = dynamic_canvas.getContext("2d");
 
-                var x_pos = 25 + 5.6 * parseInt($(this).val());
-
+                var x_pos = 25 + 11 * parseInt($(this).val());
+                console.log(x_pos);
                 dynamic_context.clearRect(0, 0, dynamic_canvas.width, dynamic_canvas.height);
                 dynamic_context.beginPath();
                 dynamic_context.moveTo(x_pos, 0);
                 dynamic_context.lineTo(x_pos, 115);
                 dynamic_context.strokeStyle = '#ff0000';
+
                 dynamic_context.stroke();
+                console.log(dynamic_context);
             });
 
             var background_canvas = document.getElementById("hbco-chart");
