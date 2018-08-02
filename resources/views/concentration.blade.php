@@ -60,7 +60,7 @@
                     mesh.name = "brain";
                     pos["brain"] = mesh;
                     scene.add(mesh);
-                    $('#items-list').append('<input type="checkbox" class="item" value="brain" />brain<br/>');
+                    $('#items-list').append('<input type="checkbox" class="item" value="brain" checked />brain<br/>');
                 });
 
                 sloader.load('../Smoke/models/kidney.stl', function (geometry) {
@@ -68,7 +68,7 @@
                     mesh.name = "kidney";
                     pos["kidney"] = mesh;
                     scene.add(mesh);
-                    $('#items-list').append('<input type="checkbox" class="item" value="kidney" />kidney<br/>');
+                    $('#items-list').append('<input type="checkbox" class="item" value="kidney" checked />kidney<br/>');
                 });
 
                 //stl
@@ -78,7 +78,7 @@
                     mesh.name = "liver";
                     pos["liver"] = mesh;
                     scene.add(mesh);
-                    $('#items-list').append('<input type="checkbox" class="item" value="liver" />liver<br/>');
+                    $('#items-list').append('<input type="checkbox" class="item" value="liver" checked />liver<br/>');
                 });
 
 
@@ -86,21 +86,21 @@
                 $(document).on('change', '.item', function() {
                     var name = $(this).attr('value');
                     if ($(this).is(':checked')) {
-                        pos[name].visible = false;
+                        pos[name].visible = true;
                     }
                     else {
-                        pos[name].visible = true;
+                        pos[name].visible = false;
                     }
                 });
 
                 $(document).on('change', '.all-items', function() {
                     if ($(this).is(':checked')) {
                         $('.item').prop('checked', true);
-                        for (var key in pos) pos[key].visible = false;
+                        for (var key in pos) pos[key].visible = true;
                     }
                     else {
                         $('.item').prop('checked', false);
-                        for (var key in pos) pos[key].visible = true;
+                        for (var key in pos) pos[key].visible = false;
                     }
                 });
 
@@ -355,9 +355,9 @@
     <div id="controls">
         <span>CONTROLS</span><br/>
         <br/>
-        <span>Check to hide / Uncheck to show</span>
+        <span>Check to show / Uncheck to hide</span>
         <div id="all-items-container">
-            <input type="checkbox" class="all-items" value="all_items" />All elements<br/>
+            <input type="checkbox" class="all-items" value="all_items" checked />All elements<br/>
         </div>
         <div id="items-list"></div>
         <br/>
@@ -376,7 +376,7 @@
                 Time: <span id="hbco-time">0</span> h
             </div>
             <div id="hbco-value-container">
-                Fetal HbCO: <span id="hbco-value">0</span> %
+                {{--Fetal HbCO: <span id="hbco-value">0</span> %--}}
             </div>
             <div id="hbco-chart-container">
                 <canvas id="hbco-chart"></canvas>
