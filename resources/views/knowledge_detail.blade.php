@@ -5,10 +5,7 @@
     <title>Knowledge Base</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css"  href="css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="font-awesome-4.2.0/css/font-awesome.css">
-    <link rel="stylesheet" type="text/css" href="css/jasny-bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/animate.css">
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -58,7 +55,6 @@
                     pos["liver"] = mesh;
                     scene.add(mesh);
                     mesh.renderOrder = 1;
-                    console.log(mesh);
                     var box = new THREE.Box3().setFromObject(mesh);
                     var center = new THREE.Vector3(box.min.x + ((box.max.x - box.min.x) / 2), box.min.y + ((box.max.y - box.min.y) / 2), box.min.z + ((box.max.z - box.min.z) / 2));
 
@@ -148,6 +144,7 @@
             camera.updateProjectionMatrix();
             renderer.setSize(width, height);
         }, false);
+
     </script>
 
     <style>
@@ -157,6 +154,8 @@
 
         body {
             font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
         }
 
         /* Style the header */
@@ -181,6 +180,10 @@
         nav ul {
             list-style-type: none;
             padding: 0;
+        }
+
+        #view-3d {
+            flex-grow: 1;
         }
 
         article {
@@ -215,7 +218,7 @@
         }
     </style>
 </head>
-<body onload="draw3D();" >
+<body @if($topic['3d']) onload="draw3D();" @endif >
 <header class="row">
     <h2>{!! $topic['title'] !!}</h2>
 </header>
@@ -232,22 +235,30 @@
         </ul>
     </nav>
 
-    <article class="col-md-4" >
+    <article @if($topic['3d']) class="col-md-4"  @else class="col-md-10" @endif>
        @foreach($topic['text'] as $text)
            <p>{!! $text!!}</p>
            @endforeach
 
     </article>
-    <div class="col-md-6">
+    @if($topic['3d'])
+    <div class="col-md-6" id="view-3d">
         <div id="viewer" style="background-color: black">
             <span id="shapecanvas"style="width:100%; height: 100%"></span>
         </div>
     </div>
-
+    @endif
 </section>
 
 </body>
+<script>
+    $(function(){
+        $('canvas').width(951.5);
+        $('canvas').height('auto');
+         console.log($('canvas').width);
 
 
+    });
+</script>
 </html>
 

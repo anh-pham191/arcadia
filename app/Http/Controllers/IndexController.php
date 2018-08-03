@@ -29,16 +29,19 @@ class IndexController extends Controller
                     'Smoking or nicotine alone causes transient reduction of uterine blood flow, while carbon monoxide in cigarette smoke can elicit hypoxemia.',
                     'Fetuses of smokers tend to have elevated hemoglobin and hematocrit, known responses to hypoxia.',
                     'Effects of smoking on the placenta may exacerbate fetal distress.',
-                    'Smokeless tobacco use has also been associated with lower birthweight.')
+                    'Smokeless tobacco use has also been associated with lower birthweight.'),
+                '3d' => false
             ),
             2 => array('title' => 'Sudden Infant Death Syndrom (SIDS)',
                 'text' => array('Evidence strongly supports a causative role of exposure to tobacco smoke in the etiology of SIDS',
                     'Studies consistently demonstrate a dose–response relationship between maternal smoking and risk of SIDS'
                 ),
+                '3d' => false
             ),
             3 => array('title' => 'Childhood obesity',
                 'text' => array('Smoking at any time during pregnancy was associated with higher offspring BMI and total fat mass.',
                 ),
+                '3d' => false
             ),
             4 => array('title' => 'Effects on the placenta',
                 'text' => array('Maternal smoking alters the blood flow to the placenta and changes the balance between proliferation and differentiation of the cytotrophoblast',
@@ -48,6 +51,7 @@ class IndexController extends Controller
                     'Maternal smoking has been associated with placenta previa, which is the implantation of the placenta over or near the internal os of the cervix. As labor approaches, partial detachment and severe vaginal bleeding may result.',
                     'The odds ratios for increased risk of placenta previa with maternal smoking ranged from 2.6 to 4.4, despite controlling for confounders'
                 ),
+                '3d' => true
             ),
             5 => array('title' => 'Metabolism of Nicotine',
                 'text' => array('Maternal smoking alters the blood flow to the placenta and changes the balance between proliferation and differentiation of the cytotrophoblast',
@@ -57,6 +61,7 @@ class IndexController extends Controller
                     'Maternal smoking has been associated with placenta previa, which is the implantation of the placenta over or near the internal os of the cervix. As labor approaches, partial detachment and severe vaginal bleeding may result.',
                     'The odds ratios for increased risk of placenta previa with maternal smoking ranged from 2.6 to 4.4, despite controlling for confounders'
                 ),
+                '3d' => true
             ),
             6 => array('title' => 'Nicotine and Brain',
                 'text' => array('Maternal smoking alters the blood flow to the placenta and changes the balance between proliferation and differentiation of the cytotrophoblast',
@@ -66,8 +71,10 @@ class IndexController extends Controller
                     'Maternal smoking has been associated with placenta previa, which is the implantation of the placenta over or near the internal os of the cervix. As labor approaches, partial detachment and severe vaginal bleeding may result.',
                     'The odds ratios for increased risk of placenta previa with maternal smoking ranged from 2.6 to 4.4, despite controlling for confounders'
                 ),
+                '3d' => true
             ),
         );
+
         return view('knowledge_detail', [
             'topic' => $array[$request->id],
         ]);
