@@ -199,7 +199,6 @@
                 dynamic_context.strokeStyle = '#ff0000';
 
                 dynamic_context.stroke();
-                console.log(dynamic_context);
             });
 
             var background_canvas = document.getElementById("hbco-chart");
