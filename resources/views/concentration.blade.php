@@ -29,7 +29,8 @@
         var selected_brain = new THREE.MeshPhongMaterial({color: 0xCCA994, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
         var unselected_kidney = new THREE.MeshPhongMaterial({color: 0xCCA994, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
         var selected_kidney = new THREE.MeshPhongMaterial({color: 0xCCA994, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
-
+        var unselected_heart = new THREE.MeshPhongMaterial({color: 0xCCA994, opacity: items_opacity, transparent: items_transparent, side: THREE.BackSide});
+        var selected_heart = new THREE.MeshPhongMaterial({color: 0xCCA994, opacity: items_opacity, transparent: items_transparent, side: THREE.BackSide});
         var surface_material = new THREE.MeshPhongMaterial({color: 0xBE645A, opacity: 0.3, transparent: true, side: THREE.BackSide}); //rgb(190,100,90)
         var width = window.innerWidth - 316;
         var height = window.innerHeight - 76;
@@ -62,6 +63,15 @@
                     scene.add(mesh);
                     $('#items-list').append('<input type="checkbox" class="item" value="brain" checked />brain<br/>');
                 });
+
+                sloader.load('../Smoke/models/arteries.stl', function (geometry) {
+                    var mesh = new THREE.Mesh(geometry, unselected_heart);
+                    mesh.name = "heart";
+                    pos["heart"] = mesh;
+                    scene.add(mesh);
+                    $('#items-list').append('<input type="checkbox" class="item" value="heart" checked />heart<br/>');
+                });
+
 
                 sloader.load('../Smoke/models/kidney.stl', function (geometry) {
                     var mesh = new THREE.Mesh(geometry, unselected_kidney);
@@ -182,6 +192,7 @@
                 pos["brain"].material.color.setHSL((max_hbco - brain[$(this).val()]) * color_factor, 1.0, 0.5);
                 pos["kidney"].material.color.setHSL((max_hbco - kidney[$(this).val()]) * color_factor, 1.0, 0.5);
                 pos["liver"].material.color.setHSL((max_hbco - liver[$(this).val()]) * color_factor, 1.0, 0.5);
+                pos["heart"].material.color.setHSL((max_hbco - liver[$(this).val()]) * color_factor, 1.0, 0.5);
 
 
                 $("#hbco-time").html($(this).val());
