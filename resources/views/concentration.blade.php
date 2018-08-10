@@ -379,7 +379,7 @@
         <span>Surface opacity:</span><br/>
         <input id="surface-slider" type="range" value="0.3" min="0" max="1" step="0.05" /><br/>
         <br/>
-        <span>HbCO (16-h exposure):</span><br/>
+        <span>Nicotine (24-h exposure):</span><br/>
         <input id="hbco-slider" type="range" value="0" min="0" max="24" step="1" />
         <div id="hbco-values">
             <div id="hbco-time-container">
