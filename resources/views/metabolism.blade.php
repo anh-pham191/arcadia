@@ -427,7 +427,7 @@
             left: 0;
             top: 25px;
             width: 290px !important;
-            height: 100px;
+            height: 100px !important;
         }
 
     </style>
@@ -438,7 +438,7 @@
 </header>
 
 <section class="row">
-    <nav class="col-md-1">
+    <nav class="col-md-2">
         <ul>
             <li><a href="/knowledge/1">Birthweight</a></li>
             <li><a href="/knowledge/2">Sudden Infant Death Syndrom (SIDS)</a></li>
@@ -449,7 +449,7 @@
         </ul>
     </nav>
 
-    <article class="col-md-3" >
+    <article class="col-md-4" >
         <p>Maternal smoking alters the blood flow to the placenta and changes the balance between proliferation and differentiation of the cytotrophoblast</p>
         <p>Changes seen in the placentas of smokers were present in less severe form in women exposed to secondhand smoke during pregnancy.</p>
         <p>Cadmium, a constituent of tobacco smoke known to accumulate in the placenta, has been shown to inhibit the activity of the enzyme 11-β-hydroxysteroid dehydrogenase type 2 (11-β-HSD2) as well as decrease 11-β-HSD2 mRNA and protein in cultured human trophoblast cells [49]. Reduction in 11-β-HSD2 activity in the placenta has been associated with decreased intrauterine growth</p>
@@ -459,7 +459,7 @@
 
 
     </article>
-    <div class="col-md-6" id="view-3d">
+    <div class="col-md-4" id="view-3d">
             <div id="viewer" style="background-color: black">
                 <span id="shapecanvas"style="width:100%; height: 100%"></span>
             </div>
@@ -503,7 +503,7 @@
 </body>
 <script>
     $(function(){
-        $('canvas').width(951.5);
+        $('canvas').width(600);
         $('canvas').height('auto');
         console.log($('canvas').width);
 
