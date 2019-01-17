@@ -49,7 +49,7 @@
 
 		// end add liver
 
-		var unselected_uterus = new THREE.MeshPhongMaterial({color: 0xF77E7E, opacity: items_opacity, transparent: items_transparent, side: THREE.FrontSide});
+		var unselected_uterus = new THREE.MeshPhongMaterial({colorunselected_liver: 0xF77E7E, opacity: items_opacity, transparent: items_transparent, side: THREE.FrontSide});
 		var selected_uterus = new THREE.MeshPhongMaterial({color: 0xF77E7E, opacity: items_opacity, transparent: items_transparent, side: THREE.FrontSide});
 		var unselected_vocal_tract = new THREE.MeshPhongMaterial({color: 0xEFD5DC, opacity: items_opacity, transparent: items_transparent, side: THREE.BackSide});
 		var selected_vocal_tract = new THREE.MeshPhongMaterial({color: 0xEFD5DC, opacity: items_opacity, transparent: items_transparent, side: THREE.BackSide});
@@ -151,7 +151,7 @@
 				//stl
 				
 				sloader.load('../Smoke/models/liver.stl', function(geometry) {
-					var mesh = new THREE.Mesh(geometry, unselected_liver);
+					var mesh = new THREE.Mesh(geometry, );
 					mesh.name = "liver";
 					pos["liver"] = mesh;
 					scene.add(mesh);
