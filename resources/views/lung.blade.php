@@ -66,56 +66,6 @@
 		
 		function draw3D() {
 			function setup() {
-				// jloader.load('../Smoke/models/3dfetus.json_1.json', function (geometry) {
-				// 	var material = new THREE.MeshPhongMaterial( {
-				// 		color: new THREE.Color("hsl(" + ((max_hbco - hbco[0]) * color_factor * 360) + ", 100%, 50%)"),
-				// 	});
-				//
-				// 	var mesh = new THREE.Mesh(geometry, material);
-				// 	mesh.name = "fetus";
-				// 	pos["fetus"] = mesh;
-				// 	mesh.renderOrder = 1;
-				// 	scene.add(mesh);
-				// 	$('#items-list').append('<input type="checkbox" class="item" value="fetus" />fetus<br/>');
-				// });
-                //
-                //
-				//
-				// jloader.load('../Smoke/models/airways.json', function (geometry) {
-				// 	var mesh = new THREE.Mesh(geometry, unselected_airways);
-				// 	mesh.name = "airways";
-				// 	pos["airways"] = mesh;
-				// 	scene.add(mesh);
-				// 	$('#items-list').append('<input type="checkbox" class="item" value="airways" />airways<br/>');
-				// });
-				//
-				// jloader.load('../Smoke/models/left_lung.json', function (geometry) {
-				// 	var mesh = new THREE.Mesh(geometry, unselected_left_lung);
-				// 	mesh.renderOrder = 0.1;
-				// 	mesh.name = "left_lung";
-				// 	pos["left_lung"] = mesh;
-				// 	scene.add(mesh);
-				// 	$('#items-list').append('<input type="checkbox" class="item" value="left_lung" />left_lung<br/>');
-				// });
-				//
-				// jloader.load('../Smoke/models/right_lung.json', function (geometry) {
-				// 	var mesh = new THREE.Mesh(geometry, unselected_right_lung);
-				// 	mesh.renderOrder = 0.1;
-				// 	mesh.name = "right_lung";
-				// 	pos["right_lung"] = mesh;
-				// 	scene.add(mesh);
-				// 	$('#items-list').append('<input type="checkbox" class="item" value="right_lung" />right_lung<br/>');
-				// });
-				//
-                //
-				// jloader.load('../Smoke/models/pelvis.json', function (geometry) {
-				// 	var mesh = new THREE.Mesh(geometry, unselected_pelvis);
-				// 	mesh.name = "pelvis";
-				// 	pos["pelvis"] = mesh;
-				// 	scene.add(mesh);
-				// 	$('#items-list').append('<input type="checkbox" class="item" value="pelvis" />pelvis<br/>');
-				// });
-
 				var sloader = new THREE.STLLoader();
 
 				// add liver
@@ -128,15 +78,15 @@
 					mesh.name = "brain";
 					pos["brain"] = mesh;
 					scene.add(mesh);
-					$('#items-list').append('<input type="checkbox" class="item" value="brain" />brain<br/>');
+					$('#items-list').append('<input type="checkbox" class="item" value="brain" checked />brain<br/>');
 				});
 
-                sloader.load('../Smoke/models/heart.stl', function (geometry) {
+                sloader.load('../Smoke/models/arteries.stl', function (geometry) {
                     var mesh = new THREE.Mesh(geometry, unselected_heart);
                     mesh.name = "heart";
                     pos["heart"] = mesh;
                     scene.add(mesh);
-                    $('#items-list').append('<input type="checkbox" class="item" value="heart" />heart<br/>');
+                    $('#items-list').append('<input type="checkbox" class="item" value="heart" checked />heart<br/>');
                 });
 
 
@@ -145,7 +95,7 @@
 					mesh.name = "kidney";
 					pos["kidney"] = mesh;
 					scene.add(mesh);
-					$('#items-list').append('<input type="checkbox" class="item" value="kidney" />kidney<br/>');
+					$('#items-list').append('<input type="checkbox" class="item" value="kidney" checked />kidney<br/>');
 				});
 
 				//stl
@@ -155,7 +105,7 @@
 					mesh.name = "liver";
 					pos["liver"] = mesh;
 					scene.add(mesh);
-					$('#items-list').append('<input type="checkbox" class="item" value="liver" />liver<br/>');
+					$('#items-list').append('<input type="checkbox" class="item" value="liver" checked />liver<br/>');
 				});
 
                 sloader.load('../Smoke/models/stomach.stl', function(geometry) {
@@ -163,7 +113,7 @@
                     mesh.name = "stomach";
                     pos["stomach"] = mesh;
                     scene.add(mesh);
-                    $('#items-list').append('<input type="checkbox" class="item" value="stomach" />stomach<br/>');
+                    $('#items-list').append('<input type="checkbox" class="item" value="stomach" checked />stomach<br/>');
                 });
 
                 sloader.load('../Smoke/models/left_lung.stl', function(geometry) {
@@ -171,7 +121,7 @@
                     mesh.name = "left_lung";
                     pos["left_lung"] = mesh;
                     scene.add(mesh);
-                    $('#items-list').append('<input type="checkbox" class="item" value="left_lung" />left_lung<br/>');
+                    $('#items-list').append('<input type="checkbox" class="item" value="left_lung" checked />left_lung<br/>');
                 });
 
 
@@ -180,60 +130,27 @@
                     mesh.name = "right_lung";
                     pos["right_lung"] = mesh;
                     scene.add(mesh);
-                    $('#items-list').append('<input type="checkbox" class="item" value="right_lung" />right_lung<br/>');
+                    $('#items-list').append('<input type="checkbox" class="item" value="right_lung" checked />right_lung<br/>');
                 });
 
-
-
-                // end add liver
-				
-				// jloader.load('../Smoke/models/uterus.json', function (geometry) {
-				// 	var mesh = new THREE.Mesh(geometry, unselected_uterus);
-				// 	mesh.renderOrder = 0.1;
-				// 	mesh.name = "uterus";
-				// 	pos["uterus"] = mesh;
-				// 	scene.add(mesh);
-				// 	$('#items-list').append('<input type="checkbox" class="item" value="uterus" />uterus<br/>');
-				// });
-				//
-				// jloader.load('../Smoke/models/vocal_tract.json', function (geometry) {
-				// 	var mesh = new THREE.Mesh(geometry, unselected_vocal_tract);
-				// 	mesh.name = "vocal_tract";
-				// 	pos["vocal_tract"] = mesh;
-				// 	scene.add(mesh);
-				// 	$('#items-list').append('<input type="checkbox" class="item" value="vocal_tract" />vocal_tract<br/>');
-				// });
-				//
-				// jloader.load('../Smoke/models/arteries.json', function (geometry) {
-				// 	var mesh = new THREE.Mesh(geometry, unselected_arteries);
-				// 	mesh.name = "arteries";
-				// 	pos["arteries"] = mesh;
-				// 	scene.add(mesh);
-				// 	$('#items-list').append('<input type="checkbox" class="item" value="arteries" />arteries<br/>');
-				// });
-
-
-
-				
-				
 				$(document).on('change', '.item', function() {
 					var name = $(this).attr('value');
 					if ($(this).is(':checked')) {
-						pos[name].visible = false;
+						pos[name].visible = true;
 					}
 					else {
-						pos[name].visible = true;
+						pos[name].visible = false;
 					}
 				});
 				
 				$(document).on('change', '.all-items', function() {
 					if ($(this).is(':checked')) {
 						$('.item').prop('checked', true);
-						for (var key in pos) pos[key].visible = false;
+						for (var key in pos) pos[key].visible = true;
 					}
 					else {
 						$('.item').prop('checked', false);
-						for (var key in pos) pos[key].visible = true;
+						for (var key in pos) pos[key].visible = false;
 					}
 				});
 				
@@ -490,7 +407,7 @@
 			<div id="controls">
 				<span>CONTROLS</span><br/>
 				<br/>
-				<span>Check to hide / Uncheck to show</span>
+				<span>Check to show / Uncheck to hide</span>
 				<div id="all-items-container">
 					<input type="checkbox" class="all-items" value="all_items" />All elements<br/>
 				</div>

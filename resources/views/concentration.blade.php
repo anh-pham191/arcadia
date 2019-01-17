@@ -29,7 +29,8 @@
         var selected_brain = new THREE.MeshPhongMaterial({color: 0xCCA994, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
         var unselected_kidney = new THREE.MeshPhongMaterial({color: 0xCCA994, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
         var selected_kidney = new THREE.MeshPhongMaterial({color: 0xCCA994, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
-
+        var unselected_heart = new THREE.MeshPhongMaterial({color: 0xCCA994, opacity: items_opacity, transparent: items_transparent, side: THREE.BackSide});
+        var selected_heart = new THREE.MeshPhongMaterial({color: 0xCCA994, opacity: items_opacity, transparent: items_transparent, side: THREE.BackSide});
         var surface_material = new THREE.MeshPhongMaterial({color: 0xBE645A, opacity: 0.3, transparent: true, side: THREE.BackSide}); //rgb(190,100,90)
         var width = window.innerWidth - 316;
         var height = window.innerHeight - 76;
@@ -37,7 +38,7 @@
         var max_hbco = 75;
         var color_factor = hue_limit / max_hbco;
 
-        var hbco = [0.0, 1.0, 1.5, 2.0, 2.6, 3.2, 3.8, 4.4, 4.9, 5.4, 5.8, 6.2, 6.6, 6.9, 7.2, 7.5, 7.7, 7.7, 7.4, 7.0, 6.4, 5.9, 5.2, 4.6, 4.1];
+        // var hbco = [0.0, 1.0, 1.5, 2.0, 2.6, 3.2, 3.8, 4.4, 4.9, 5.4, 5.8, 6.2, 6.6, 6.9, 7.2, 7.5, 7.7, 7.7, 7.4, 7.0, 6.4, 5.9, 5.2, 4.6, 4.1];
 
         var liver = [0, 60, 25, 3, 2, 1, 0.9, 0.7, 0.6, 0.5, 0.5, 0.5, 0.4, 0.4, 0.3, 0.2, 0.2, 0.2, 0.1, 0.1, 0.1, 0.09, 0.08, 0.08, 0.07];
 
@@ -60,15 +61,24 @@
                     mesh.name = "brain";
                     pos["brain"] = mesh;
                     scene.add(mesh);
-                    $('#items-list').append('<input type="checkbox" class="item" value="brain" />brain<br/>');
+                    $('#items-list').append('<input type="checkbox" class="item" value="brain" checked />brain<br/>');
                 });
+
+                sloader.load('../Smoke/models/arteries.stl', function (geometry) {
+                    var mesh = new THREE.Mesh(geometry, unselected_heart);
+                    mesh.name = "heart";
+                    pos["heart"] = mesh;
+                    scene.add(mesh);
+                    $('#items-list').append('<input type="checkbox" class="item" value="heart" checked />heart<br/>');
+                });
+
 
                 sloader.load('../Smoke/models/kidney.stl', function (geometry) {
                     var mesh = new THREE.Mesh(geometry, unselected_kidney);
                     mesh.name = "kidney";
                     pos["kidney"] = mesh;
                     scene.add(mesh);
-                    $('#items-list').append('<input type="checkbox" class="item" value="kidney" />kidney<br/>');
+                    $('#items-list').append('<input type="checkbox" class="item" value="kidney" checked />kidney<br/>');
                 });
 
                 //stl
@@ -78,7 +88,7 @@
                     mesh.name = "liver";
                     pos["liver"] = mesh;
                     scene.add(mesh);
-                    $('#items-list').append('<input type="checkbox" class="item" value="liver" />liver<br/>');
+                    $('#items-list').append('<input type="checkbox" class="item" value="liver" checked />liver<br/>');
                 });
 
 
@@ -86,21 +96,21 @@
                 $(document).on('change', '.item', function() {
                     var name = $(this).attr('value');
                     if ($(this).is(':checked')) {
-                        pos[name].visible = false;
+                        pos[name].visible = true;
                     }
                     else {
-                        pos[name].visible = true;
+                        pos[name].visible = false;
                     }
                 });
 
                 $(document).on('change', '.all-items', function() {
                     if ($(this).is(':checked')) {
                         $('.item').prop('checked', true);
-                        for (var key in pos) pos[key].visible = false;
+                        for (var key in pos) pos[key].visible = true;
                     }
                     else {
                         $('.item').prop('checked', false);
-                        for (var key in pos) pos[key].visible = true;
+                        for (var key in pos) pos[key].visible = false;
                     }
                 });
 
@@ -182,21 +192,23 @@
                 pos["brain"].material.color.setHSL((max_hbco - brain[$(this).val()]) * color_factor, 1.0, 0.5);
                 pos["kidney"].material.color.setHSL((max_hbco - kidney[$(this).val()]) * color_factor, 1.0, 0.5);
                 pos["liver"].material.color.setHSL((max_hbco - liver[$(this).val()]) * color_factor, 1.0, 0.5);
+                pos["heart"].material.color.setHSL((max_hbco - liver[$(this).val()]) * color_factor, 1.0, 0.5);
 
 
                 $("#hbco-time").html($(this).val());
-                $("#hbco-value").html(hbco[$(this).val()]);
+                // $("#hbco-value").html(hbco[$(this).val()]);
 
                 var dynamic_canvas = document.getElementById("hbco-chart-line");
                 var dynamic_context = dynamic_canvas.getContext("2d");
 
-                var x_pos = 25 + 5.6 * parseInt($(this).val());
-
+                var x_pos = 25 + 11 * parseInt($(this).val());
+                console.log(x_pos);
                 dynamic_context.clearRect(0, 0, dynamic_canvas.width, dynamic_canvas.height);
                 dynamic_context.beginPath();
                 dynamic_context.moveTo(x_pos, 0);
                 dynamic_context.lineTo(x_pos, 115);
                 dynamic_context.strokeStyle = '#ff0000';
+
                 dynamic_context.stroke();
             });
 
@@ -353,9 +365,9 @@
     <div id="controls">
         <span>CONTROLS</span><br/>
         <br/>
-        <span>Check to hide / Uncheck to show</span>
+        <span>Check to show / Uncheck to hide</span>
         <div id="all-items-container">
-            <input type="checkbox" class="all-items" value="all_items" />All elements<br/>
+            <input type="checkbox" class="all-items" value="all_items" checked />All elements<br/>
         </div>
         <div id="items-list"></div>
         <br/>
@@ -367,14 +379,14 @@
         <span>Surface opacity:</span><br/>
         <input id="surface-slider" type="range" value="0.3" min="0" max="1" step="0.05" /><br/>
         <br/>
-        <span>HbCO (16-h exposure):</span><br/>
+        <span>Nicotine (24-h exposure):</span><br/>
         <input id="hbco-slider" type="range" value="0" min="0" max="24" step="1" />
         <div id="hbco-values">
             <div id="hbco-time-container">
                 Time: <span id="hbco-time">0</span> h
             </div>
             <div id="hbco-value-container">
-                Fetal HbCO: <span id="hbco-value">0</span> %
+                {{--Fetal HbCO: <span id="hbco-value">0</span> %--}}
             </div>
             <div id="hbco-chart-container">
                 <canvas id="hbco-chart"></canvas>

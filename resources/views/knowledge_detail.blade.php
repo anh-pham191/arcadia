@@ -37,7 +37,6 @@
         var selected_liver = new THREE.MeshPhongMaterial({color: 0xCCA994, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
         var unselected_left_lung = new THREE.MeshPhongMaterial({color: 0xCCA994, opacity: items_opacity, transparent: items_transparent, side: THREE.BackSide});
         var unselected_airways = new THREE.MeshPhongMaterial({color: 0xEFD5DC, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
-        var unselected_liver = new THREE.MeshPhongMaterial({color: 0xCCA994, opacity: items_opacity, transparent: items_transparent, side: THREE.DoubleSide});
 
         var width = window.innerWidth - 316;
         var height = window.innerHeight - 76;
@@ -50,24 +49,7 @@
         function draw3D() {
             function setup() {
 
-//                var sloader = new THREE.STLLoader();
 //
-//                // add liver
-//
-//                sloader.load('../Smoke/models/liver.stl', function(geometry) {
-//                    var mesh = new THREE.Mesh(geometry, unselected_liver);
-//
-//                    mesh.name = "liver";
-//                    pos["liver"] = mesh;
-//                    scene.add(mesh);
-//                    mesh.renderOrder = 1;
-//                    console.log(mesh);
-//                    var box = new THREE.Box3().setFromObject(mesh);
-//                    var center = new THREE.Vector3(box.min.x + ((box.max.x - box.min.x) / 2), box.min.y + ((box.max.y - box.min.y) / 2), box.min.z + ((box.max.z - box.min.z) / 2));
-//
-//                    controls.target.set(center.x, center.y, center.z);
-//                    controls.update();
-//                });
 
                  jloader.load('../Smoke/models/cord_1.json', function (geometry) {
                  	var material = new THREE.MeshPhongMaterial( {
@@ -115,7 +97,7 @@
                     mesh.name = "liver";
                     pos["liver"] = mesh;
                     scene.add(mesh);
-                    $('#items-list').append('<input type="checkbox" class="item" value="left_lung" />liver<br/>');
+                    $('#items-list').append('<input type="checkbox" class="item" value="left_lung" />left_lung<br/>');
 
                 });
 
